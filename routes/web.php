@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.master');
 });
+
+
+Route::get('/create', [TaskController::class, 'create']);
+Route::get('/index', [TaskController::class, 'index']);
+Route::get('/statistics', [TaskController::class, 'statistics']);
