@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.master');
-});
 
+// Login routes
 
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth', 'admin'])->group(function () {
 Route::get('/create', [TaskController::class, 'create'])->name('tasks.create');
 Route::post('/store', [TaskController::class, 'store'])->name('tasks.store');
-Route::get('/index', [TaskController::class, 'index'])->name('tasks.index');
+Route::get('/', [TaskController::class, 'index'])->name('tasks.index');
+
 Route::get('/statistics', [TaskController::class, 'statistics']);
+});
