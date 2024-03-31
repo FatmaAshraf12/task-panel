@@ -35,6 +35,7 @@ class StartApp extends Command
         }
         $this->call('migrate');
         $this->call('db:seed');
+        $this->call('serve');
         $this->info('Composer install completed successfully.');
     
     }
