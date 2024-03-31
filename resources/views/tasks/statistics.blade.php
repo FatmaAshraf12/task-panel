@@ -21,10 +21,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($users as $user)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>10</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->tasks_count}}</td>
                         </tr>
+                        @endforeach
                       
                     </tbody>
                 </table>

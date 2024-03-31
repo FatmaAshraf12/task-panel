@@ -24,22 +24,30 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link ">
             <i class="fas fa-fw fa-cog"></i>
             <span>Tasks</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{url('/create')}}">Add</a>
-                <a class="collapse-item" href="{{url('/index')}}">List</a>
-                <a class="collapse-item" href="{{url('/statistics')}}">Statistics</a>
-            </div>
-        </div>
     </li>
+    <div class="w-75 ml-auto mr-auto">
+   
+            <li class="nav-item">
+                <a class="nav-link"  href="{{url('/create')}}">
+                    <span> - Add</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/index')}}">
+                    <span> - List</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/statistics')}}">
+                    <span> - Statistics</span></a>
+            </li>
 
   
-    
+        </div>
    
 
 </ul>

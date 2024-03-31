@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/create', [TaskController::class, 'create']);
-Route::get('/index', [TaskController::class, 'index']);
+Route::get('/create', [TaskController::class, 'create'])->name('tasks.create');
+Route::post('/store', [TaskController::class, 'store'])->name('tasks.store');
+Route::get('/index', [TaskController::class, 'index'])->name('tasks.index');
 Route::get('/statistics', [TaskController::class, 'statistics']);
