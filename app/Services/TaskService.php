@@ -3,6 +3,7 @@
 
 namespace App\Services;
 
+use App\Models\Statistics;
 use App\Repositories\Task\TaskRepository;
 use App\Repositories\User\UserRepository;
 
@@ -38,7 +39,8 @@ class TaskService
 
     public function statistics()
     {
-        $users =  $this->userRepository->getHeighestUsersWithTasks();
-        return view('tasks.statistics',compact('users'));
+       // $users =  $this->userRepository->getHeighestUsersWithTasks();
+       $statistics = Statistics::orderByDesc('tasks_count')->limit(10)->get();
+        return view('tasks.statistics',compact('statistics'));
     }
 }

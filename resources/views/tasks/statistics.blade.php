@@ -21,10 +21,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($statistics as $stat)
                         <tr>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->tasks_count}}</td>
+                            <td>{{$stat->user->name}}</td>
+                            <td>{{$stat->tasks_count}}</td>
                         </tr>
                         @endforeach
                       

@@ -15,23 +15,36 @@ class UserRepository implements UserRepositoryInterface
 
     public function getUsers()
     {
-        return User::role('user')->get();
+        try {
 
+            return User::role('user')->get();
+        } catch (\Throwable $th) {
+            return [];
+        }
     }
 
     public function getAdmins()
     {
-        return  User::role('admin')->get();
+        try {
+            return  User::role('admin')->get();
+        } catch (\Throwable $th) {
+            return [];
+        }
     }
 
     public function getHeighestUsersWithTasks()
-    {
-        return User::role('user')
-        ->whereHas('tasks')
-        ->withCount('tasks')
-        ->orderByDesc('tasks_count')
-        ->limit(10)
-        ->get();
+    {   try {
+    
+            return User::role('user')
+            ->whereHas('tasks')
+            ->withCount('tasks')
+            ->orderByDesc('tasks_count')
+            ->limit(10)
+            ->get();
+                //code...
+        } catch (\Throwable $th) {
+            return [];
+        }
     }
 
 }

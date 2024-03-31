@@ -14,22 +14,34 @@ class TaskRepository implements TaskRepositoryInterface
 
     public function store($request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'admin_id'=>'required|exists:users,id',
-            'user_id'=>'required|exists:users,id'
-        ]);
+        try {
+    
+            $validatedData = $request->validate([
+                'title' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'admin_id'=>'required|exists:users,id',
+                'user_id'=>'required|exists:users,id'
+            ]);
 
-        $this->task->create($validatedData);
-        return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
+            $this->task->create($validatedData);
+            return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->route('tasks.create')->with('error', 'Please Try Again!');
+
+        }
     }
 
 
     public function index()
-    {
-        $tasks =  $this->task->paginate(10);
-        return view('tasks.index' , compact('tasks'));
+    {   
+        try {
+
+            $tasks =  $this->task->paginate(10);
+        } catch (\Throwable $th) {
+            $tasks =  [];
+          }
+          return view('tasks.index' , compact('tasks')); 
+        
     }
 
 }
