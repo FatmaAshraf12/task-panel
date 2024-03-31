@@ -16,9 +16,9 @@ class TaskRepository implements TaskRepositoryInterface
     {
         try {
     
-            $validatedData = $request->validate([
+           $validatedData = $request->validate([
                 'title' => 'required|string|max:255',
-                'description' => 'nullable|string',
+                'description' => 'required|string',
                 'admin_id'=>'required|exists:users,id',
                 'user_id'=>'required|exists:users,id'
             ]);
@@ -26,7 +26,6 @@ class TaskRepository implements TaskRepositoryInterface
             $this->task->create($validatedData);
             return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
         } catch (\Throwable $th) {
-            dd($th);
             return redirect()->route('tasks.create')->with('error', 'Please Try Again!');
 
         }

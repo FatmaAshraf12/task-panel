@@ -21,12 +21,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if ($statistics->count() >0)
+                            
+                        
                         @foreach($statistics as $stat)
                         <tr>
                             <td>{{$stat->user->name}}</td>
                             <td>{{$stat->tasks_count}}</td>
                         </tr>
                         @endforeach
+                        @else
+                        @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->tasks_count}}</td>
+                        </tr>
+                        @endforeach
+
+                        @endif
                       
                     </tbody>
                 </table>

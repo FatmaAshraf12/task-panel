@@ -39,8 +39,8 @@ class TaskService
 
     public function statistics()
     {
-       // $users =  $this->userRepository->getHeighestUsersWithTasks();
+       $users =  $this->userRepository->getHeighestUsersWithTasks();
        $statistics = Statistics::orderByDesc('tasks_count')->limit(10)->get();
-        return view('tasks.statistics',compact('statistics'));
+        return view('tasks.statistics',compact('statistics' , 'users'));
     }
 }

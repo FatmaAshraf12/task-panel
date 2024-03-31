@@ -28,3 +28,8 @@ Start Application
  php artisan app:start
 ```
 
+To run update statistics in background
+
+```bash
+php artisan update:statistics
+```
