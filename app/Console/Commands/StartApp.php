@@ -28,9 +28,7 @@ class StartApp extends Command
     {
 
         $this->call('migrate');
-        $this->call('db:seed --class=AdminSeeder');
-        $this->call('db:seed --class=UserSeeder');
-
+        $this->call('db:seed');
         $this->call('serve');
         $this->info('Application started successfully.');
     
