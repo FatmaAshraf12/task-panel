@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         $userRole = Role::where('name', 'user')->first();
 
-        User::factory(10)->create()->each(function ($user) use ($userRole) {
+        User::factory(1000)->create()->each(function ($user) use ($userRole) {
             $user->assignRole($userRole);
         });
 
