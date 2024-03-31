@@ -16,12 +16,8 @@ class AdminSeeder extends Seeder
     {
         $adminRole = Role::where('name', 'admin')->first();
 
-        $admin = User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => '12345678',
-        ]);
-
-        $admin->assignRole($adminRole);
+        User::factory(100)->create()->each(function ($user) use ($adminRole) {
+            $user->assignRole($adminRole);
+        });
     }
 }

@@ -16,12 +16,11 @@ class UserSeeder extends Seeder
     {
         $userRole = Role::where('name', 'user')->first();
 
-        $user = User::create([
-            'name' => 'User 1',
-            'email' => 'user@gmail.com',
-            'password' => '12345678',
-        ]);
+        User::factory(1000)->create()->each(function ($user) use ($userRole) {
+            $user->assignRole($userRole);
+        });
 
-        $user->assignRole($userRole);
+        
+
     }
 }

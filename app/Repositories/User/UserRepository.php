@@ -27,6 +27,7 @@ class UserRepository implements UserRepositoryInterface
     public function getHeighestUsersWithTasks()
     {
         return User::role('user')
+        ->whereHas('tasks')
         ->withCount('tasks')
         ->orderByDesc('tasks_count')
         ->limit(10)
