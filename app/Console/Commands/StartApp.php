@@ -27,16 +27,12 @@ class StartApp extends Command
     public function handle()
     {
 
-        $process = new Process(['composer', 'install']);
-        $process->run();
-        if (!$process->isSuccessful()) {
-            $this->error('Composer install failed: '.$process->getErrorOutput());
-            return;
-        }
         $this->call('migrate');
-        $this->call('db:seed');
+        $this->call('db:seed --class=AdminSeeder');
+        $this->call('db:seed --class=UserSeeder');
+
         $this->call('serve');
-        $this->info('Composer install completed successfully.');
+        $this->info('Application started successfully.');
     
     }
 }
